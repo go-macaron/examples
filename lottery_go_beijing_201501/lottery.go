@@ -120,16 +120,23 @@ func main() {
 
 			switch msg {
 			case "START":
+				if len(people) == 0 {
+					conn.WriteMessage(websocket.TextMessage, []byte("没人了我会乱说？"))
+					conn.Close()
+					return
+				}
 				go sendRandomInfo(conn, stop)
 			case "STOP":
 				stop <- true
 			default:
-				for _, p := range people {
+				// Find corresponding name to display.
+				for i, p := range people {
 					if p.info == msg {
 						if err = conn.WriteMessage(websocket.TextMessage, []byte(p.name)); err != nil {
 							log.Printf("Fail to send message: %v", err)
 							return
 						}
+						people = append(people[:i], people[i+1:]...)
 					}
 				}
 			}

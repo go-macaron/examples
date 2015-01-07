@@ -9,12 +9,15 @@ $(document).ready(function () {
     ws.onclose = function () {
         $('#status').text("服务已断开连接");
         $('button[name=start_btn]').hide();
+        $('#stop_btn').hide();
     };
     ws.onmessage = function (msg) {
         if (status == 1)
             $('#current_info').text(msg.data);
-        else if (status == 0)
+        else if (status == 0) {
             $('#name').text(msg.data);
+            $('table tbody').append('<tr><td>' + msg.data + '</td><td>' + $('#info').text() + '</td></tr>')
+        }
     };
 
     $('button[name=start_btn]').click(function () {
