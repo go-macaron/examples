@@ -52,7 +52,7 @@ func init() {
 				continue
 			}
 
-			infos := strings.Split(line, " ")
+			infos := strings.Split(line, "\t")
 			if len(infos) < 2 {
 				continue
 			}
