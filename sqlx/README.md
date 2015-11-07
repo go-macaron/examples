@@ -2,6 +2,14 @@
 
 This is an example of using Macaron and sqlx to achieve CRUD tasks for songs.
 
+Install and run:
+
+```sh
+$ go get github.com/go-macaron/examples/sqlx
+$ cd github.com/go-macaron/examples/sqlx
+$ make
+```
+
 - Create a song:
 
 	```sh
