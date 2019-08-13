@@ -23,9 +23,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Unknwon/com"
-	"github.com/Unknwon/macaron"
 	"github.com/gorilla/websocket"
+	"github.com/unknwon/com"
+	"gopkg.in/macaron.v1"
 )
 
 type person struct {
